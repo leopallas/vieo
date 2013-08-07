@@ -1,0 +1,6 @@
+1.在jdbc.properties 中配置数据库
+2.在spring/spring-servlet.properties中，用file.save.rootPath参数设置上传文件的根目录.
+3.设置demo-web的webContext为 /.
+3.在tomcat中设置软链接，使其指向上传文件根目录. 其webContext为/upload (upload.xml放到../conf/Catalina/localhost/下就可以)
+
+4.100000.zip 为测试上传的zip文件.

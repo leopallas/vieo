@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+        http://www.springframework.org/schema/util 
+        http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+    <context:property-placeholder location="classpath:/spring/spring-servlet.properties"
+        ignore-unresolvable="true" />
+
+    <context:component-scan base-package="com.demo.web.controller" />
+
+    <mvc:annotation-driven />
+
+    <!-- use default servlet to response static resources -->
+    <mvc:default-servlet-handler />
+    
+	<bean id="urlTimeOffset" class="java.lang.Long">
+        <constructor-arg value="${url.timeoffset}" />
+    </bean>
+
+    <bean id="fileRootPath" class="java.io.File">
+        <constructor-arg value="${file.save.rootPath}" />
+    </bean>
+
+<!--     <bean id="serverRegisterService" class="com.icommunity.ppm.service.ServerRegisterService" init-method="initRegister" lazy-init="false"/> -->
+
+    <!-- support Rest json, dependency jackson-core-lgpl.jar、jackson-mapper-asl.jar、jackson-mapper-lgpl.jar -->
+    <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <util:list id="beanList">
+                <ref bean="mappingJacksonHttpMessageConverter" />
+            </util:list>
+        </property>
+    </bean>
+
+
+    <!-- upload file，dependency commons-fileupload.jar -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="${file.maxUploadSize}" /> <!-- -the maximum allowed size, 1 indicates no limit (the default). -->
+        <property name="maxInMemorySize" value="${file.maxInMemorySize}" /> <!-- the maximum in memory size allowed -->
+    </bean>
+
+     <!--handle exception -->
+    <bean id="pdaExceptionResolver" class="com.demo.web.interceptor.PDAExceptionResolver">
+        <property name="defaultPathPattern"  value="/client/**" />
+    </bean>
+
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/pda/sync/**" />-->
+            <!--<bean class="com.demo.web.interceptor.PDASecurityInterceptor" />-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
+</beans>

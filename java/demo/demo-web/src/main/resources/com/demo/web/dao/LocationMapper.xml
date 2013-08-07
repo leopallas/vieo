@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demo.web.dao.LocationMapper" >
+  <resultMap id="BaseResultMap" type="com.demo.web.domain.Location" >
+    <id column="loc_id" property="locId" jdbcType="VARCHAR" />
+    <result column="serial_no" property="serialNo" jdbcType="VARCHAR" />
+    <result column="usr_id" property="usrId" jdbcType="VARCHAR" />
+    <result column="src_type" property="srcType" jdbcType="INTEGER" />
+    <result column="lat" property="lat" jdbcType="DOUBLE" />
+    <result column="lon" property="lon" jdbcType="DOUBLE" />
+    <result column="create_dt" property="createDt" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    loc_id, serial_no, usr_id, src_type, lat, lon, create_dt
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from location
+    where loc_id = #{locId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from location
+    where loc_id = #{locId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.demo.web.domain.Location" >
+    insert into location (loc_id, serial_no, usr_id, 
+      src_type, lat, lon, create_dt
+      )
+    values (#{locId,jdbcType=VARCHAR}, #{serialNo,jdbcType=VARCHAR}, #{usrId,jdbcType=VARCHAR}, 
+      #{srcType,jdbcType=INTEGER}, #{lat,jdbcType=DOUBLE}, #{lon,jdbcType=DOUBLE}, #{createDt,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.demo.web.domain.Location" >
+    insert into location
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="locId != null" >
+        loc_id,
+      </if>
+      <if test="serialNo != null" >
+        serial_no,
+      </if>
+      <if test="usrId != null" >
+        usr_id,
+      </if>
+      <if test="srcType != null" >
+        src_type,
+      </if>
+      <if test="lat != null" >
+        lat,
+      </if>
+      <if test="lon != null" >
+        lon,
+      </if>
+      <if test="createDt != null" >
+        create_dt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="locId != null" >
+        #{locId,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNo != null" >
+        #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="usrId != null" >
+        #{usrId,jdbcType=VARCHAR},
+      </if>
+      <if test="srcType != null" >
+        #{srcType,jdbcType=INTEGER},
+      </if>
+      <if test="lat != null" >
+        #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="lon != null" >
+        #{lon,jdbcType=DOUBLE},
+      </if>
+      <if test="createDt != null" >
+        #{createDt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.web.domain.Location" >
+    update location
+    <set >
+      <if test="serialNo != null" >
+        serial_no = #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="usrId != null" >
+        usr_id = #{usrId,jdbcType=VARCHAR},
+      </if>
+      <if test="srcType != null" >
+        src_type = #{srcType,jdbcType=INTEGER},
+      </if>
+      <if test="lat != null" >
+        lat = #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="lon != null" >
+        lon = #{lon,jdbcType=DOUBLE},
+      </if>
+      <if test="createDt != null" >
+        create_dt = #{createDt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where loc_id = #{locId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demo.web.domain.Location" >
+    update location
+    set serial_no = #{serialNo,jdbcType=VARCHAR},
+      usr_id = #{usrId,jdbcType=VARCHAR},
+      src_type = #{srcType,jdbcType=INTEGER},
+      lat = #{lat,jdbcType=DOUBLE},
+      lon = #{lon,jdbcType=DOUBLE},
+      create_dt = #{createDt,jdbcType=TIMESTAMP}
+    where loc_id = #{locId,jdbcType=VARCHAR}
+  </update>
+</mapper>

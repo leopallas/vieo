@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demo.web.dao.PictureMapper" >
+  <resultMap id="BaseResultMap" type="com.demo.web.domain.Picture" >
+    <id column="pic_id" property="picId" jdbcType="VARCHAR" />
+    <result column="usr_id" property="usrId" jdbcType="VARCHAR" />
+    <result column="pic_name" property="picName" jdbcType="VARCHAR" />
+    <result column="pic_type" property="picType" jdbcType="INTEGER" />
+    <result column="pic_desc" property="picDesc" jdbcType="VARCHAR" />
+    <result column="sod_desc" property="sodDesc" jdbcType="VARCHAR" />
+    <result column="create_dt" property="createDt" jdbcType="TIMESTAMP" />
+    <result column="upload_dt" property="uploadDt" jdbcType="TIMESTAMP" />
+    <result column="lat" property="lat" jdbcType="DOUBLE" />
+    <result column="lon" property="lon" jdbcType="DOUBLE" />
+    <result column="clh" property="clh" jdbcType="VARCHAR" />
+    <result column="xc" property="xc" jdbcType="INTEGER" />
+    <result column="tw" property="tw" jdbcType="INTEGER" />
+    <result column="bw" property="bw" jdbcType="INTEGER" />
+    <result column="gzfj" property="gzfj" jdbcType="INTEGER" />
+    <result column="gzfl" property="gzfl" jdbcType="INTEGER" />
+    <result column="gznr" property="gznr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pic_id, usr_id, pic_name, pic_type, pic_desc, sod_desc, create_dt, upload_dt, lat, 
+    lon, clh, xc, tw, bw, gzfj, gzfl, gznr
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from picture
+    where pic_id = #{picId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from picture
+    where pic_id = #{picId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.demo.web.domain.Picture" >
+    insert into picture (pic_id, usr_id, pic_name, 
+      pic_type, pic_desc, sod_desc, 
+      create_dt, upload_dt, lat, 
+      lon, clh, xc, tw, 
+      bw, gzfj, gzfl, gznr
+      )
+    values (#{picId,jdbcType=VARCHAR}, #{usrId,jdbcType=VARCHAR}, #{picName,jdbcType=VARCHAR}, 
+      #{picType,jdbcType=INTEGER}, #{picDesc,jdbcType=VARCHAR}, #{sodDesc,jdbcType=VARCHAR}, 
+      #{createDt,jdbcType=TIMESTAMP}, #{uploadDt,jdbcType=TIMESTAMP}, #{lat,jdbcType=DOUBLE}, 
+      #{lon,jdbcType=DOUBLE}, #{clh,jdbcType=VARCHAR}, #{xc,jdbcType=INTEGER}, #{tw,jdbcType=INTEGER}, 
+      #{bw,jdbcType=INTEGER}, #{gzfj,jdbcType=INTEGER}, #{gzfl,jdbcType=INTEGER}, #{gznr,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.demo.web.domain.Picture" >
+    insert into picture
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="picId != null" >
+        pic_id,
+      </if>
+      <if test="usrId != null" >
+        usr_id,
+      </if>
+      <if test="picName != null" >
+        pic_name,
+      </if>
+      <if test="picType != null" >
+        pic_type,
+      </if>
+      <if test="picDesc != null" >
+        pic_desc,
+      </if>
+      <if test="sodDesc != null" >
+        sod_desc,
+      </if>
+      <if test="createDt != null" >
+        create_dt,
+      </if>
+      <if test="uploadDt != null" >
+        upload_dt,
+      </if>
+      <if test="lat != null" >
+        lat,
+      </if>
+      <if test="lon != null" >
+        lon,
+      </if>
+      <if test="clh != null" >
+        clh,
+      </if>
+      <if test="xc != null" >
+        xc,
+      </if>
+      <if test="tw != null" >
+        tw,
+      </if>
+      <if test="bw != null" >
+        bw,
+      </if>
+      <if test="gzfj != null" >
+        gzfj,
+      </if>
+      <if test="gzfl != null" >
+        gzfl,
+      </if>
+      <if test="gznr != null" >
+        gznr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="picId != null" >
+        #{picId,jdbcType=VARCHAR},
+      </if>
+      <if test="usrId != null" >
+        #{usrId,jdbcType=VARCHAR},
+      </if>
+      <if test="picName != null" >
+        #{picName,jdbcType=VARCHAR},
+      </if>
+      <if test="picType != null" >
+        #{picType,jdbcType=INTEGER},
+      </if>
+      <if test="picDesc != null" >
+        #{picDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="sodDesc != null" >
+        #{sodDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createDt != null" >
+        #{createDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uploadDt != null" >
+        #{uploadDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lat != null" >
+        #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="lon != null" >
+        #{lon,jdbcType=DOUBLE},
+      </if>
+      <if test="clh != null" >
+        #{clh,jdbcType=VARCHAR},
+      </if>
+      <if test="xc != null" >
+        #{xc,jdbcType=INTEGER},
+      </if>
+      <if test="tw != null" >
+        #{tw,jdbcType=INTEGER},
+      </if>
+      <if test="bw != null" >
+        #{bw,jdbcType=INTEGER},
+      </if>
+      <if test="gzfj != null" >
+        #{gzfj,jdbcType=INTEGER},
+      </if>
+      <if test="gzfl != null" >
+        #{gzfl,jdbcType=INTEGER},
+      </if>
+      <if test="gznr != null" >
+        #{gznr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.web.domain.Picture" >
+    update picture
+    <set >
+      <if test="usrId != null" >
+        usr_id = #{usrId,jdbcType=VARCHAR},
+      </if>
+      <if test="picName != null" >
+        pic_name = #{picName,jdbcType=VARCHAR},
+      </if>
+      <if test="picType != null" >
+        pic_type = #{picType,jdbcType=INTEGER},
+      </if>
+      <if test="picDesc != null" >
+        pic_desc = #{picDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="sodDesc != null" >
+        sod_desc = #{sodDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createDt != null" >
+        create_dt = #{createDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uploadDt != null" >
+        upload_dt = #{uploadDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lat != null" >
+        lat = #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="lon != null" >
+        lon = #{lon,jdbcType=DOUBLE},
+      </if>
+      <if test="clh != null" >
+        clh = #{clh,jdbcType=VARCHAR},
+      </if>
+      <if test="xc != null" >
+        xc = #{xc,jdbcType=INTEGER},
+      </if>
+      <if test="tw != null" >
+        tw = #{tw,jdbcType=INTEGER},
+      </if>
+      <if test="bw != null" >
+        bw = #{bw,jdbcType=INTEGER},
+      </if>
+      <if test="gzfj != null" >
+        gzfj = #{gzfj,jdbcType=INTEGER},
+      </if>
+      <if test="gzfl != null" >
+        gzfl = #{gzfl,jdbcType=INTEGER},
+      </if>
+      <if test="gznr != null" >
+        gznr = #{gznr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pic_id = #{picId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demo.web.domain.Picture" >
+    update picture
+    set usr_id = #{usrId,jdbcType=VARCHAR},
+      pic_name = #{picName,jdbcType=VARCHAR},
+      pic_type = #{picType,jdbcType=INTEGER},
+      pic_desc = #{picDesc,jdbcType=VARCHAR},
+      sod_desc = #{sodDesc,jdbcType=VARCHAR},
+      create_dt = #{createDt,jdbcType=TIMESTAMP},
+      upload_dt = #{uploadDt,jdbcType=TIMESTAMP},
+      lat = #{lat,jdbcType=DOUBLE},
+      lon = #{lon,jdbcType=DOUBLE},
+      clh = #{clh,jdbcType=VARCHAR},
+      xc = #{xc,jdbcType=INTEGER},
+      tw = #{tw,jdbcType=INTEGER},
+      bw = #{bw,jdbcType=INTEGER},
+      gzfj = #{gzfj,jdbcType=INTEGER},
+      gzfl = #{gzfl,jdbcType=INTEGER},
+      gznr = #{gznr,jdbcType=VARCHAR}
+    where pic_id = #{picId,jdbcType=VARCHAR}
+  </update>
+
+    <!--<resultMap id="ExtendBaseResultMap" extends="BaseResultMap" type="com.demo.web.domain.Picture" >-->
+    <resultMap id="ExtendBaseResultMap" type="com.demo.web.domain.Picture" >
+        <id column="pic_id" property="picId" jdbcType="VARCHAR" />
+        <result column="usr_id" property="usrId" jdbcType="VARCHAR" />
+        <result column="pic_name" property="picName" jdbcType="VARCHAR" />
+        <result column="pic_type" property="picType" jdbcType="INTEGER" />
+        <result column="pic_desc" property="picDesc" jdbcType="VARCHAR" />
+        <result column="sod_desc" property="sodDesc" jdbcType="VARCHAR" />
+        <result column="lat" property="lat" jdbcType="DOUBLE" />
+        <result column="lon" property="lon" jdbcType="DOUBLE" />
+        <result column="create_dt" property="createDt" jdbcType="TIMESTAMP" />
+        <result column="upload_dt" property="uploadDt" jdbcType="TIMESTAMP" />
+        <result column="usr_name" property="usrName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="selectPictureList" resultMap="ExtendBaseResultMap">
+        select p.pic_id, p.usr_id, p.pic_type, p.pic_name, p.pic_desc, p.sod_desc, p.lat, p.lon, p.create_dt, p.upload_dt, u.usr_name
+        from picture p
+        inner join user u
+        on (u.usr_id = p.usr_id)
+    </select>
+
+    <select id="selectPictureListAfterTimeline" resultMap="ExtendBaseResultMap">
+    select p.pic_id, p.usr_id, p.pic_type, p.pic_name, p.pic_desc, p.sod_desc, p.lat, p.lon, p.create_dt, p.upload_dt, u.usr_name
+    from picture p
+    inner join user u
+    on (u.usr_id = p.usr_id)
+    where <![CDATA[
+          p.upload_dt > #{timeline,jdbcType=TIMESTAMP}
+      and p.upload_dt <= #{currentDt,jdbcType=TIMESTAMP}
+      and p.usr_id != #{usrId, jdbcType=VARCHAR}
+      ]]>
+    </select>
+
+    <select id="getNumberOfPictureAfterTimeline" resultType="int">
+    select count(1)
+    from picture
+    where <![CDATA[
+        upload_dt >= #{timeline,jdbcType=TIMESTAMP}
+      and upload_dt < #{currentDt, ,jdbcType=TIMESTAMP}
+
+      ]]>
+    </select>
+
+    <select id="getGPSLocation" resultType="map">
+        SELECT lat, lon
+        FROM picture
+        where usr_id = #{usrId,jdbcType=VARCHAR}
+        AND lat IS NOT NULL
+        AND lon IS NOT NULL
+        ORDER BY create_dt DESC
+        LIMIT 1
+    </select>
+</mapper>

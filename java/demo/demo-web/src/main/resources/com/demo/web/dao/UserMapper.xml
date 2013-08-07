@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demo.web.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.demo.web.domain.User" >
+    <id column="usr_id" property="usrId" jdbcType="VARCHAR" />
+    <result column="usr_pwd" property="usrPwd" jdbcType="VARCHAR" />
+    <result column="usr_name" property="usrName" jdbcType="VARCHAR" />
+    <result column="usr_type" property="usrType" jdbcType="INTEGER" />
+    <result column="secret_token" property="secretToken" jdbcType="VARCHAR" />
+    <result column="signature_key" property="signatureKey" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    usr_id, usr_pwd, usr_name, usr_type, secret_token, signature_key
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where usr_id = #{usrId,jdbcType=VARCHAR}
+  </select>
+
+    <select id="selectAll" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List" />
+        from user
+    </select>
+
+    <select id="selectBySecretToken" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="Base_Column_List" />
+        from user
+        where secret_token = #{secretToken,jdbcType=VARCHAR}
+    </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user
+    where usr_id = #{usrId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.demo.web.domain.User" >
+    insert into user (usr_id, usr_pwd, usr_name, usr_type,
+      secret_token, signature_key)
+    values (#{usrId,jdbcType=VARCHAR}, #{usrPwd,jdbcType=VARCHAR}, #{usrName,jdbcType=VARCHAR}, #{usrType,jdbcType=INTEGER},
+      #{secretToken,jdbcType=VARCHAR}, #{signatureKey,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.demo.web.domain.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="usrId != null" >
+        usr_id,
+      </if>
+      <if test="usrPwd != null" >
+        usr_pwd,
+      </if>
+      <if test="usrName != null" >
+        usr_name,
+      </if>
+        <if test="usrType != null" >
+            usr_type,
+        </if>
+      <if test="secretToken != null" >
+        secret_token,
+      </if>
+      <if test="signatureKey != null" >
+        signature_key,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="usrId != null" >
+        #{usrId,jdbcType=VARCHAR},
+      </if>
+      <if test="usrPwd != null" >
+        #{usrPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="usrName != null" >
+        #{usrName,jdbcType=VARCHAR},
+      </if>
+        <if test="usrType != null" >
+            #{usrType,jdbcType=INTEGER},
+        </if>
+      <if test="secretToken != null" >
+        #{secretToken,jdbcType=VARCHAR},
+      </if>
+      <if test="signatureKey != null" >
+        #{signatureKey,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.web.domain.User" >
+    update user
+    <set >
+      <if test="usrPwd != null" >
+        usr_pwd = #{usrPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="usrName != null" >
+        usr_name = #{usrName,jdbcType=VARCHAR},
+      </if>
+        <if test="usrType != null" >
+            usr_type = #{usrType,jdbcType=INTEGER},
+        </if>
+      <if test="secretToken != null" >
+        secret_token = #{secretToken,jdbcType=VARCHAR},
+      </if>
+      <if test="signatureKey != null" >
+        signature_key = #{signatureKey,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where usr_id = #{usrId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demo.web.domain.User" >
+    update user
+    set usr_pwd = #{usrPwd,jdbcType=VARCHAR},
+      usr_name = #{usrName,jdbcType=VARCHAR},
+      usr_type = #{usrType,jdbcType=INTEGER},
+      secret_token = #{secretToken,jdbcType=VARCHAR},
+      signature_key = #{signatureKey,jdbcType=VARCHAR}
+    where usr_id = #{usrId,jdbcType=VARCHAR}
+  </update>
+</mapper>
