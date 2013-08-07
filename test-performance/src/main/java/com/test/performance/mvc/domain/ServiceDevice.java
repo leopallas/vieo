@@ -1,19 +1,19 @@
 package com.test.performance.mvc.domain;
 
 public class ServiceDevice extends BasicDevice {
-    private String   privateIP;
+    private String privateIP;
 
-    private int      privatePort;
+    private int privatePort;
 
-    private String   macAddress;
+    private String macAddress;
 
-    private String   dynamicDNS;
+    private String dynamicDNS;
 
     private String[] provideServices;
 
-    private boolean  canWOL;
+    private boolean canWOL;
 
-    private boolean  canP2P;
+    private boolean canP2P;
 
     public String getDynamicDNS() {
         return this.dynamicDNS;

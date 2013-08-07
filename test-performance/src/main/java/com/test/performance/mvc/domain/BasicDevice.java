@@ -4,36 +4,37 @@ import java.util.Date;
 import java.util.UUID;
 
 public class BasicDevice {
-	private String			id;
+    private String id;
+
     public static void assignDeviceID(BasicDevice device) {
         device.setDeviceID(UUID.randomUUID().toString());
     }
 
-    private String            userID;
+    private String userID;
 
-    private String            deviceID;
+    private String deviceID;
 
-    private String            serialID;
+    private String serialID;
 
-    private String            manufacture;
+    private String manufacture;
 
-    private String            name;
+    private String name;
 
-    private String            version;
+    private String version;
 
-    private String            osVersion;
+    private String osVersion;
 
-    private String            extraInfo;
+    private String extraInfo;
 
-    private String            publicIP;
+    private String publicIP;
 
-    private int               publicPort;
+    private int publicPort;
 
     private AuthenticationKey authenticationKey;
 
-    private Date              lastActiveTime;
+    private Date lastActiveTime;
 
-    private int               status;
+    private int status;
 
     public AuthenticationKey getAuthenticationKey() {
         return this.authenticationKey;
@@ -139,11 +140,11 @@ public class BasicDevice {
         this.version = version;
     }
 
-	public String getId() {
-		return id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}        
+    public void setId(String id) {
+        this.id = id;
+    }
 }
