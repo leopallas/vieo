@@ -1,17 +1,11 @@
 /**
  * Create on 2011-10-16 ����07:48:33 by tengfei.fangtf
- * 
+ *
  * Copyright 1999-2100 Alibaba.com Corporation Limited.
- * 
+ *
  * All rights reserved.
  */
 package com.vieo.aop.bci;
-
-import java.io.IOException;
-import java.lang.instrument.ClassFileTransformer;
-import java.lang.instrument.IllegalClassFormatException;
-import java.lang.instrument.Instrumentation;
-import java.security.ProtectionDomain;
 
 import javassist.CannotCompileException;
 import javassist.ClassPool;
@@ -19,9 +13,15 @@ import javassist.CtClass;
 import javassist.CtMethod;
 import javassist.NotFoundException;
 
+import java.io.IOException;
+import java.lang.instrument.ClassFileTransformer;
+import java.lang.instrument.IllegalClassFormatException;
+import java.lang.instrument.Instrumentation;
+import java.security.ProtectionDomain;
+
 /**
  * 字节码转换器
- * 
+ *
  * @author tengfei.fangtf
  */
 public class MyClassFileTransformer implements ClassFileTransformer {
@@ -61,7 +61,7 @@ public class MyClassFileTransformer implements ClassFileTransformer {
 
     /**
      * 在main函数执行前，执行的函数
-     * 
+     *
      * @param options
      * @param ins
      */

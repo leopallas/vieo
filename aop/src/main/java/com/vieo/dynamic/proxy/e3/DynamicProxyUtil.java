@@ -11,7 +11,7 @@ import java.util.Arrays;
  * Date: 7/19/13
  * Time: 10:52 AM
  * To change this template use File | Settings | File Templates.
- *
+ * <p/>
  * 代理工具类,用其他类提供代理
  */
 public class DynamicProxyUtil implements InvocationHandler {
@@ -24,7 +24,7 @@ public class DynamicProxyUtil implements InvocationHandler {
     /**
      * 将被代理对象传入,以便生产代理类
      */
-    public Object generateProxyClass(Object proxyObject){
+    public Object generateProxyClass(Object proxyObject) {
         this.proxyObject = proxyObject;//将被代理对象引入该类
         //根据被代理对象的类信息生产代理类
         Class<?> clazz = proxyObject.getClass();
@@ -40,7 +40,7 @@ public class DynamicProxyUtil implements InvocationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println(String.format("方法%s调用前,传入参数%s", method.getName(), Arrays.toString(args)));
         Object result = method.invoke(this.proxyObject, args);
-        System.out.println(String.format("方法%s调用前,返回值%s", method.getName(),result));
+        System.out.println(String.format("方法%s调用前,返回值%s", method.getName(), result));
         return result;
     }
 }

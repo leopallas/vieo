@@ -28,7 +28,7 @@ public class Test2 {
         Class<?> clazzType2 = Class.forName("java.lang.String");
         Object array = Array.newInstance(clazzType2, 10);
         Array.set(array, 5, "hello");
-        String s = (String)Array.get(array, 5);
+        String s = (String) Array.get(array, 5);
         System.out.println(s);
     }
 }

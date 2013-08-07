@@ -27,7 +27,7 @@ public final class $Proxy0 extends Proxy implements Subject {
 
     public final boolean equals(Object paramObject) {
         try {
-            return ((Boolean) this.h.invoke(this, m1, new Object[] { paramObject })).booleanValue();
+            return ((Boolean) this.h.invoke(this, m1, new Object[]{paramObject})).booleanValue();
         } catch (Error localError) {
             throw localError;
         } catch (Throwable localThrowable) {
@@ -71,7 +71,7 @@ public final class $Proxy0 extends Proxy implements Subject {
 
     static {
         try {
-            m1 = Class.forName("java.lang.Object").getMethod("equals", new Class[] { Class.forName("java.lang.Object") });
+            m1 = Class.forName("java.lang.Object").getMethod("equals", new Class[]{Class.forName("java.lang.Object")});
             m3 = Class.forName("com.leo.dynamic.proxy.e4.Subject").getMethod("request", new Class[0]);
             m0 = Class.forName("java.lang.Object").getMethod("hashCode", new Class[0]);
             m2 = Class.forName("java.lang.Object").getMethod("toString", new Class[0]);

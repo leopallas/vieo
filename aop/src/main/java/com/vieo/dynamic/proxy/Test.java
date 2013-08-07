@@ -93,17 +93,18 @@ public class Test {
 
         // 直接一步到位，直接生成一个动态对象，和Class类中的newInstance方法很像，都是一步到位。
         Collection proxy3 = (Collection) Proxy.newProxyInstance(Collection.class.getClassLoader(),
-                new Class[] { Collection.class }, new InvocationHandler() {
-                    ArrayList target = new ArrayList();
-                    @Override
-                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                        long start = System.currentTimeMillis();
-                        Object retVal = method.invoke(target, args);
-                        Thread.sleep(1000);
-                        System.out.println(method.getName() + "方法，耗时" + (System.currentTimeMillis() - start) + "毫秒");
-                        return retVal;
-                    }
-                });
+                new Class[]{Collection.class}, new InvocationHandler() {
+            ArrayList target = new ArrayList();
+
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                long start = System.currentTimeMillis();
+                Object retVal = method.invoke(target, args);
+                Thread.sleep(1000);
+                System.out.println(method.getName() + "方法，耗时" + (System.currentTimeMillis() - start) + "毫秒");
+                return retVal;
+            }
+        });
         proxy3.add(1);
         proxy3.add(4);
         System.out.println(proxy3.size());

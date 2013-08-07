@@ -31,9 +31,9 @@ public class DebugProxy implements InvocationHandler {
             System.out.println("--before method " + method.getName());
             //調用GreetImpl中方法
             result = method.invoke(obj, args);
-        } catch(InvocationTargetException e) {
+        } catch (InvocationTargetException e) {
             throw e.getTargetException();
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw new RuntimeException("unexpected invocation exception: " + e.getMessage());
         } finally {
             System.out.println("--after method " + method.getName());

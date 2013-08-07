@@ -12,6 +12,7 @@ import java.lang.reflect.Method;
  */
 public class BusinessHandler implements InvocationHandler {
     private Object object = null;
+
     public BusinessHandler(Object object) {
         this.object = object;
     }
@@ -21,7 +22,7 @@ public class BusinessHandler implements InvocationHandler {
         System.out.println("do something before method");
         Object ret = method.invoke(this.object, args);
         System.out.println("do something after method");
-        if(proxy instanceof Manager) {
+        if (proxy instanceof Manager) {
             System.out.println("manager....");
         }
         return ret;

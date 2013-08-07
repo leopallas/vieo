@@ -1,12 +1,13 @@
 /**
  * Create on 2011-10-13 ����04:29:04 by tengfei.fangtf
- * 
+ *
  * Copyright 1999-2100 Alibaba.com Corporation Limited.
- * 
+ *
  * All rights reserved.
  */
 package com.vieo.aop.javassist;
 
+import com.vieo.aop.model.Business;
 import javassist.CannotCompileException;
 import javassist.ClassPool;
 import javassist.CtClass;
@@ -14,13 +15,10 @@ import javassist.CtMethod;
 import javassist.NotFoundException;
 import javassist.Translator;
 
-import com.vieo.aop.model.Business;
-
-
 
 /**
  * 使用Javassist演示Aop的Demo.
- * 
+ *
  * @author tengfei.fangtf
  */
 public class JavassistAopDemo {
@@ -48,8 +46,8 @@ public class JavassistAopDemo {
         CtMethod m = cc.getDeclaredMethod("doSomeThing");
         //在方法执行前插入代码
         m.insertBefore("{ System.out.println(\"记录日志\"); }");
-        ((Business)cc.toClass().newInstance()).doSomeThing();
-        
+        ((Business) cc.toClass().newInstance()).doSomeThing();
+
     }
 
     public static class MyTranslator implements Translator {

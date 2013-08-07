@@ -10,6 +10,7 @@ package com.vieo.dynamic.proxy.e3;
 public interface UserService {
     /**
      * 添加一个用户
+     *
      * @return
      */
     public boolean add(String name);

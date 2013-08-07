@@ -1,17 +1,16 @@
 package com.vieo.aop.cglib;
 
-import java.lang.reflect.Method;
-
+import com.vieo.aop.model.Business;
+import com.vieo.aop.model.IBusiness2;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
-import com.vieo.aop.model.Business;
-import com.vieo.aop.model.IBusiness2;
+import java.lang.reflect.Method;
 
 /**
  * 字节码生成机制演示AOP
- * 
+ *
  * @author tengfei.fangtf
  */
 public class CglibAopDemo {

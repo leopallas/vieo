@@ -24,7 +24,7 @@ public final class $Proxy0 extends Proxy implements Manager {
 
     static {
         try {
-            m1 = Class.forName("java.lang.Object").getMethod("equals", new Class[] { Class.forName("java.lang.Object") });
+            m1 = Class.forName("java.lang.Object").getMethod("equals", new Class[]{Class.forName("java.lang.Object")});
             m0 = Class.forName("java.lang.Object").getMethod("hashCode", new Class[0]);
             m3 = Class.forName("com.leo.dynamic.proxy.e2.Manager").getMethod("modify", new Class[0]);
             m2 = Class.forName("java.lang.Object").getMethod("toString", new Class[0]);
@@ -42,7 +42,7 @@ public final class $Proxy0 extends Proxy implements Manager {
     @Override
     public final boolean equals(Object obj) {
         try {
-            return ((Boolean) super.h.invoke(this, m1, new Object[] { obj })).booleanValue();
+            return ((Boolean) super.h.invoke(this, m1, new Object[]{obj})).booleanValue();
         } catch (Throwable throwable) {
             throw new UndeclaredThrowableException(throwable);
         }

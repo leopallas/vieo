@@ -1,22 +1,22 @@
 /**
  * Create on 2011-10-12 ����02:03:12 by tengfei.fangtf
- * 
+ *
  * Copyright 1999-2100 Alibaba.com Corporation Limited.
- * 
+ *
  * All rights reserved.
  */
 package com.vieo.aop.dynamicProxy;
-
-import java.lang.reflect.Method;
 
 import com.vieo.aop.dynamicProxy.DynamicProxyDemo.LogInvocationHandler;
 import com.vieo.aop.model.Business;
 import com.vieo.aop.model.IBusiness;
 import com.vieo.aop.model.IBusiness2;
 
+import java.lang.reflect.Method;
+
 /**
  * 织入器生成的代理类
- * 
+ *
  * @author tengfei.fangtf
  */
 public class ProxyBusiness implements IBusiness, IBusiness2 {
