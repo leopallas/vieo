@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+	<ROLE_TABLE ID="1" NAME="Admin" VERSION="0" />
+	<ROLE_TABLE ID="2" NAME="User" VERSION="0" />
+	<USER_TABLE ID="1" EMAIL="admin@workin.org.cn" LOGIN_NAME="admin" NAME="Admin" PASSWORD="admin" VERSION="0" />
+	<USER_TABLE ID="2" EMAIL="user@workin.org.cn" LOGIN_NAME="user" NAME="User" PASSWORD="user" VERSION="0" />
+	<USER_TABLE ID="3" EMAIL="jack@workin.org.cn" LOGIN_NAME="user2" NAME="Jack" PASSWORD="user2" VERSION="0" />
+	<USER_TABLE ID="4" EMAIL="kate@workin.org.cn" LOGIN_NAME="user3" NAME="Kate" PASSWORD="user3" VERSION="0" />
+	<USER_TABLE ID="5" EMAIL="sawyer@workin.org.cn" LOGIN_NAME="user4" NAME="Sawyer" PASSWORD="user4" VERSION="0" />
+	<USER_TABLE ID="6" EMAIL="ben@workin.org.cn" LOGIN_NAME="user5" NAME="Sawyer" PASSWORD="user5" VERSION="0" />
+	<USER_ROLE USER_ID="1" ROLE_ID="1" />
+	<USER_ROLE USER_ID="1" ROLE_ID="2" />
+	<USER_ROLE USER_ID="2" ROLE_ID="2" />
+	<USER_ROLE USER_ID="3" ROLE_ID="2" />
+	<USER_ROLE USER_ID="4" ROLE_ID="2" />
+	<USER_ROLE USER_ID="5" ROLE_ID="2" />
+	<USER_ROLE USER_ID="6" ROLE_ID="2" />
+</dataset>

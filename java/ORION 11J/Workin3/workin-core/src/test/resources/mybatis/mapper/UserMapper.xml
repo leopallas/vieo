@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.workin.unit.orm.mybatis.UserMapper">
+
+  <select id="findUserById" resultType="org.workin.unit.orm.domain.entity.User" parameterType="int">
+	SELECT 	ID, 
+		VERSION, 
+		EMAIL, 
+		LOGIN_NAME as loginName, 
+		NAME, 
+		PASSWORD
+	FROM 
+		user_table 
+	WHERE ID = #{id}
+  </select>
+  
+  <insert id="insertUser" parameterType="org.workin.unit.orm.domain.entity.User" useGeneratedKeys="true" keyProperty="id">
+  	INSERT INTO user_table(ID, 
+	VERSION, 
+	EMAIL, 
+	LOGIN_NAME, 
+	NAME, 
+	PASSWORD
+	)
+	VALUES
+	(#{id}, 
+	#{version}, 
+	#{email}, 
+	#{loginName}, 
+	#{name}, 
+	#{password})
+  </insert>
+
+</mapper>
